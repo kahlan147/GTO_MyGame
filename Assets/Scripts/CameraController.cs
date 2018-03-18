@@ -6,15 +6,20 @@ public class CameraController : MonoBehaviour {
 
     public Camera ExplorationCamera;
     public Camera CombatCamera;
-    
+    public ExploringParty party;
 
 	// Use this for initialization
 	void Start () {
         CombatCamera.gameObject.SetActive(false);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        ExploringParty.positionChanged += MoveExplorationCameraToPlayer;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -30,5 +35,10 @@ public class CameraController : MonoBehaviour {
             ExplorationCamera.gameObject.SetActive(true);
             CombatCamera.gameObject.SetActive(false);
         }
+    }
+
+    public void MoveExplorationCameraToPlayer()
+    {
+        this.transform.position = party.transform.position + new Vector3(0, 10, 0);
     }
 }

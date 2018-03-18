@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour {
 
-
+    public ExploringEnemy enemy;
     public bool NotWalkable;
+    public bool SpawnTile;
 
 	// Use this for initialization
 	void Start () {
@@ -16,4 +17,18 @@ public class Tile : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+    public bool CanWalkHere()
+    {
+        if (NotWalkable)
+        {
+            return false;
+        }
+        
+
+        return true;
+    }
+    
+
 }

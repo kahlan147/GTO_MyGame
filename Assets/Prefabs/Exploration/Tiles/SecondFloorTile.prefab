@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114604223612075424}
   m_Layer: 0
   m_Name: SecondFloorTile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,3 +486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e115daeefc656234ababa70838eb7ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  NotWalkable: 0
+  SpawnTile: 0

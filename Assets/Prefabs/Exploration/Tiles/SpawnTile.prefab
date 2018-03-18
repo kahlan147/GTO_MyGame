@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4208487620630760}
   - component: {fileID: 114604223612075424}
   m_Layer: 0
-  m_Name: WaterTile
+  m_Name: SpawnTile
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1393195163013268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4779244825066568}
@@ -316,7 +316,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 84144523e54dce044b66ee38c843dfdd, type: 2}
+  - {fileID: 2100000, guid: 28f35e5ac99fe9e429eaeb56b29c0337, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -487,5 +487,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
-  NotWalkable: 1
-  SpawnTile: 0
+  NotWalkable: 0
+  SpawnTile: 1

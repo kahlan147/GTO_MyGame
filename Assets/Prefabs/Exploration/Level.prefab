@@ -57,5 +57,7 @@ MonoBehaviour:
   - {fileID: 114604223612075424, guid: 0f40d1b967cd9544bb0dd10177b043f6, type: 2}
   - {fileID: 114604223612075424, guid: 73de45aba88b3ce438128f02eabc19d8, type: 2}
   - {fileID: 114604223612075424, guid: 1fa63fed300df2b49b6880d666f4f6c5, type: 2}
+  - {fileID: 114604223612075424, guid: 54271351f5339004e962fa750d68914e, type: 2}
   LevelFile: {fileID: 4900000, guid: 83cca19e65d4bbe48b5c9a22f150ee76, type: 3}
-  oh: 
+  party: {fileID: 114585533783143724, guid: 3bdb9b06855747a4eb5f29278011c5f0, type: 2}
+  cameraController: {fileID: 0}

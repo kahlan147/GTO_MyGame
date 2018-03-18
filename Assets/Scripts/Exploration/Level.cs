@@ -9,13 +9,17 @@ public class Level : MonoBehaviour {
 
     public List<Tile> Tiles;
     public TextAsset LevelFile;
+    public ExploringParty party;
+    public CameraController cameraController;
 
     private List<List<int>> LevelArray;
+    private Tile SpawnTile;
 
 	// Use this for initialization
 	void Start () {
         ReadLevelTextFile();
-        BuildLevel();   
+        BuildLevel();
+        SpawnPlayer();
 	}
 	
 	// Update is called once per frame
@@ -39,6 +43,10 @@ public class Level : MonoBehaviour {
             {
                 Vector3 spawnLocation = new Vector3(x * SpawnDistance, 0, y * SpawnDistance);
                 Tile levelTile = Instantiate(Tiles[number], spawnLocation, this.transform.rotation, this.transform);
+                if (levelTile.SpawnTile)
+                {
+                    SpawnTile = levelTile;
+                }
                 x++;
             }
             x = 0;
@@ -79,5 +87,11 @@ public class Level : MonoBehaviour {
             x = 0;
             y++;
         }*/
+    }
+
+    private void SpawnPlayer()
+    {
+        cameraController.party = Instantiate(party, SpawnTile.transform.position + new Vector3(0,1,0), party.transform.rotation);
+        cameraController.MoveExplorationCameraToPlayer();
     }
 }
