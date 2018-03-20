@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4208487620630760}
   - component: {fileID: 114604223612075424}
   m_Layer: 0
-  m_Name: SpawnTile
+  m_Name: EnemySpawnTile
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,4 +488,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   NotWalkable: 0
-  SpawnTile: 1
+  PlayerSpawnTile: 0
+  EnemySpawnTile: 1
+  EndTile: 0

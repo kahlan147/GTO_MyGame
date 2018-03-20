@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5ccc50b82e5e64c84f4f75088caf9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemies:
+  - {fileID: 114093568041190804, guid: 36b0d35dd3d53e046b9fb0b963ffdb8f, type: 2}
   Tiles:
   - {fileID: 114604223612075424, guid: 9a778d237d6f43e428b53c37c30ff839, type: 2}
   - {fileID: 114604223612075424, guid: 7e999b553e1b3cc4b9dfa96b69b40e0c, type: 2}
@@ -58,6 +60,7 @@ MonoBehaviour:
   - {fileID: 114604223612075424, guid: 73de45aba88b3ce438128f02eabc19d8, type: 2}
   - {fileID: 114604223612075424, guid: 1fa63fed300df2b49b6880d666f4f6c5, type: 2}
   - {fileID: 114604223612075424, guid: 54271351f5339004e962fa750d68914e, type: 2}
+  - {fileID: 114604223612075424, guid: 4ac7919ea2cff8a4f9ede33ed1a30406, type: 2}
   LevelFile: {fileID: 4900000, guid: 83cca19e65d4bbe48b5c9a22f150ee76, type: 3}
   party: {fileID: 114585533783143724, guid: 3bdb9b06855747a4eb5f29278011c5f0, type: 2}
   cameraController: {fileID: 0}

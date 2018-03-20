@@ -60,7 +60,7 @@ public class ExploringParty : MonoBehaviour {
             if (hit.collider.transform.parent.gameObject.tag == "Tile")
             {
                 Tile tile = hit.collider.transform.parent.gameObject.GetComponent<Tile>();
-                if (tile.CanWalkHere())
+                if (tile.CanWalkHerePlayer())
                 {
                     myTile = tile;
                     this.transform.position = potentialNewPosition;

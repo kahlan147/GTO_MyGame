@@ -39,6 +39,6 @@ public class CameraController : MonoBehaviour {
 
     public void MoveExplorationCameraToPlayer()
     {
-        this.transform.position = party.transform.position + new Vector3(0, 10, 0);
+        ExplorationCamera.transform.position = party.transform.position + new Vector3(0, 50, 0);
     }
 }

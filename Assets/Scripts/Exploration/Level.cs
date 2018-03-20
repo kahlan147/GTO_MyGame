@@ -7,6 +7,7 @@ using System;
 
 public class Level : MonoBehaviour {
 
+    public List<ExploringEnemy> Enemies;
     public List<Tile> Tiles;
     public TextAsset LevelFile;
     public ExploringParty party;
@@ -43,7 +44,7 @@ public class Level : MonoBehaviour {
             {
                 Vector3 spawnLocation = new Vector3(x * SpawnDistance, 0, y * SpawnDistance);
                 Tile levelTile = Instantiate(Tiles[number], spawnLocation, this.transform.rotation, this.transform);
-                if (levelTile.SpawnTile)
+                if (levelTile.PlayerSpawnTile)
                 {
                     SpawnTile = levelTile;
                 }
@@ -91,7 +92,17 @@ public class Level : MonoBehaviour {
 
     private void SpawnPlayer()
     {
-        cameraController.party = Instantiate(party, SpawnTile.transform.position + new Vector3(0,1,0), party.transform.rotation);
+        this.party = Instantiate(party, SpawnTile.transform.position + new Vector3(0, 1, 0), party.transform.rotation);
+        cameraController.party = party;
         cameraController.MoveExplorationCameraToPlayer();
+    }
+
+    public ExploringEnemy GetRandomEnemy(Vector3 spawnPosition)
+    {
+        if (Vector3.Distance(spawnPosition, party.gameObject.transform.position) > 70)
+        {
+            return Enemies[UnityEngine.Random.Range(0, Enemies.Capacity)];
+        }
+        return null;
     }
 }
