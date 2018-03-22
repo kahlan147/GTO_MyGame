@@ -60,7 +60,11 @@ public class ExploringEnemy : MonoBehaviour {
 
         if (hit.collider != null)
         {
-            if (hit.collider.transform.parent.gameObject.tag == "Tile")
+            if (hit.collider.transform.parent.gameObject.tag == "Player")
+            {
+                Debug.Log("oh");
+            }
+                if (hit.collider.transform.parent.gameObject.tag == "Tile")
             {
                 Tile tile = hit.collider.transform.parent.gameObject.GetComponent<Tile>();
                 if (tile.CanWalkHereEnemy())

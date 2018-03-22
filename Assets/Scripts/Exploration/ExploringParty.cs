@@ -9,14 +9,24 @@ public class ExploringParty : MonoBehaviour {
     public delegate void ChangedPosition();
     public static event ChangedPosition positionChanged;
 
+    private bool combatTriggered = false;
+
 	// Use this for initialization
 	void Start () {
-
+        
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        CheckMovement();
+
+    private void OnEnable()
+    {
+        GameplaySwitcher.CombatTriggered += CombatTriggered;
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (!combatTriggered)
+        {
+            CheckMovement();
+        }
 	}
 
     private void CheckMovement()
@@ -68,6 +78,10 @@ public class ExploringParty : MonoBehaviour {
                 }
             }
         }
+    }
+
+    private void CombatTriggered(bool triggered) {
+        combatTriggered = triggered;
     }
     
 }

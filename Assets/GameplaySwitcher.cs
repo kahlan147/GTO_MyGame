@@ -6,8 +6,11 @@ public class GameplaySwitcher : MonoBehaviour {
 
     public CameraController cameraController;
 
-	// Use this for initialization
-	void Start () {
+    public delegate void TriggerCombat(bool triggered);
+    public static event TriggerCombat CombatTriggered;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 
@@ -24,6 +27,7 @@ public class GameplaySwitcher : MonoBehaviour {
     private void combatTriggered(ExploringEnemy enemy) {
         cameraController.SwitchCamera();
         Destroy(enemy.gameObject);
+        CombatTriggered(true);
         //TO BE WORKED ON.
     }
 }

@@ -17,10 +17,15 @@ public class CombatManager : MonoBehaviour {
     private float P1Charge = 0;
     private float P2Charge = 0;
 
+    private bool CombatTriggered;
+
     // Use this for initialization
     void Start () {
         P1Charges = new bool[AmountOfCharges];
         P2Charges = new bool[AmountOfCharges];
+
+        P1ChargeBar.gameObject.SetActive(false);
+        P2ChargeBar.gameObject.SetActive(false);
 
         for (int x = 1; x < AmountOfCharges; x++)
         {
@@ -31,11 +36,19 @@ public class CombatManager : MonoBehaviour {
             image2.transform.position = P2ChargeBar.transform.position + new Vector3(location, 0, 0);
         }
 	}
-	
-	// Update is called once per frame
-	void Update (){
-        Charge(ref P1ChargeBar, ref P1Charges, ref P1Charge, 0.17f);
-        Charge(ref P2ChargeBar, ref P2Charges, ref P2Charge, 0.1f);
+
+    private void OnEnable()
+    {
+        GameplaySwitcher.CombatTriggered += TriggerCombat;
+    }
+
+    // Update is called once per frame
+    void Update (){
+        if (CombatTriggered)
+        {
+            Charge(ref P1ChargeBar, ref P1Charges, ref P1Charge, 0.17f);
+            Charge(ref P2ChargeBar, ref P2Charges, ref P2Charge, 0.1f);
+        }
     }
 
     private void Charge(ref Slider ChargeBar, ref bool[] Charges, ref float Charge, float ChargeSpeed)
@@ -86,5 +99,15 @@ public class CombatManager : MonoBehaviour {
     public void P2Attack()
     {
 
+    }
+
+    private void TriggerCombat(bool triggered){
+        CombatTriggered = triggered;
+        P1ChargeBar.gameObject.SetActive(triggered);
+        P2ChargeBar.gameObject.SetActive(triggered);
+        P1Charge = 0;
+        P2Charge = 0;
+        P1Charges = new bool[AmountOfCharges];
+        P2Charges = new bool[AmountOfCharges];
     }
 }
