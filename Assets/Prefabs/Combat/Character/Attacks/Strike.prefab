@@ -54,4 +54,5 @@ MonoBehaviour:
   Damage: 0
   APCost: 0
   ManaCost: 0
+  AttackName: Strike
   TargetAllies: 0

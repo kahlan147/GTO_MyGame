@@ -54,4 +54,5 @@ MonoBehaviour:
   Damage: 0
   APCost: 0
   ManaCost: 0
+  AttackName: Shoot arrow
   TargetAllies: 0

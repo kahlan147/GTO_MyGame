@@ -16,7 +16,7 @@ public class GameplaySwitcher : MonoBehaviour {
 
     private void OnEnable()
     {
-        Tile.CombatTriggered += combatTriggered;
+        //Tile.CombatTriggered += combatTriggered;
     }
 
     // Update is called once per frame
@@ -24,9 +24,9 @@ public class GameplaySwitcher : MonoBehaviour {
 		
 	}
 
-    private void combatTriggered(ExploringEnemy enemy) {
+    public void combatTriggered() {
         cameraController.SwitchCamera();
-        Destroy(enemy.gameObject);
+        //Destroy(enemy.gameObject);
         CombatTriggered(true);
         //TO BE WORKED ON.
     }

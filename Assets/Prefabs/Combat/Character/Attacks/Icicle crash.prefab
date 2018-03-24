@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
-  APCost: 0
+  APCost: 3
   ManaCost: 0
+  AttackName: Icicle crash
   TargetAllies: 0
+  effectsList: 0000000000000000

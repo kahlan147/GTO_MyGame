@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: -5
-  APCost: 1
+  APCost: 2
   ManaCost: 5
+  AttackName: Heal
   TargetAllies: 1

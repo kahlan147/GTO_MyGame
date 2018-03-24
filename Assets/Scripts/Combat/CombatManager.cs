@@ -7,7 +7,6 @@ public class CombatManager : MonoBehaviour {
 
     public Slider P1ChargeBar;
     public Slider P2ChargeBar;
-    public RawImage ChargebarNotifier;
 
     private int AmountOfCharges = 8;
 
@@ -26,15 +25,6 @@ public class CombatManager : MonoBehaviour {
 
         P1ChargeBar.gameObject.SetActive(false);
         P2ChargeBar.gameObject.SetActive(false);
-
-        for (int x = 1; x < AmountOfCharges; x++)
-        {
-            float location = -120f + (240f / AmountOfCharges * x);
-            RawImage image1 = Instantiate(ChargebarNotifier, P1ChargeBar.transform);
-            RawImage image2 = Instantiate(ChargebarNotifier, P2ChargeBar.transform);
-            image1.transform.position = P1ChargeBar.transform.position + new Vector3(location, 0, 0);
-            image2.transform.position = P2ChargeBar.transform.position + new Vector3(location, 0, 0);
-        }
 	}
 
     private void OnEnable()

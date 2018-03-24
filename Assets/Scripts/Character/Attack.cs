@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour {
-
+    
     [Header("Values")]
     [Tooltip("Negative values to heal a target")]
     public int Damage;
     public int APCost;
     public int ManaCost;
+    public string AttackName;
     [Tooltip("True if the attack may only target allied characters")]
     public bool TargetAllies;
+
+    public List<Effect.effect> effectsList;
 
 	// Use this for initialization
 	void Start () {

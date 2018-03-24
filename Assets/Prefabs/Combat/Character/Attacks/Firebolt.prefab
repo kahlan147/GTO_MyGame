@@ -54,4 +54,5 @@ MonoBehaviour:
   Damage: 5
   APCost: 1
   ManaCost: 5
+  AttackName: Firebolt
   TargetAllies: 0
