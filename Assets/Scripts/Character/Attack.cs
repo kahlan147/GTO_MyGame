@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack : MonoBehaviour {
+public class Attack : MonoBehaviour, UIChoosable {
     
     [Header("Values")]
     [Tooltip("Negative values to heal a target")]
@@ -24,4 +24,14 @@ public class Attack : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public string getName()
+    {
+        return AttackName;
+    }
+
+    public int getApCost()
+    {
+        return APCost;
+    }
 }
