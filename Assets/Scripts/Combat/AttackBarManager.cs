@@ -6,16 +6,21 @@ using UnityEngine.UI;
 public class AttackBarManager : MonoBehaviour {
 
     public GameObject AttackBar;
-    
+
+    public Attack attack;
     private List<GameObject> AttackBars;
-    private List<UIChoosable> attacks;
+    private List<Attack> attacks;
     private int ApUsed = 0;
     private int MaxAp = 8;
 
 	// Use this for initialization
 	void Start () {
         AttackBars = new List<GameObject>();
-        attacks = new List<UIChoosable>();
+        attacks = new List<Attack>();
+        for (int x = 0; x < MaxAp; x++)
+        {
+            AddAttack(attack);
+        }
 	}
 	
 	// Update is called once per frame
@@ -23,58 +28,42 @@ public class AttackBarManager : MonoBehaviour {
 		
 	}
 
-    public void AddAttack(UIChoosable attack)
+    public void AddAttack(Attack attack)
     {
-        if (ApUsed < MaxAp && (ApUsed + attack.getApCost()) <= MaxAp)
+        if (ApUsed < MaxAp && (ApUsed + attack.APCost) <= MaxAp)
         {
             GameObject attackBarUI = Instantiate(AttackBar, this.transform);
             RectTransform attackBarRT = attackBarUI.GetComponent<RectTransform>();
-            attackBarRT.anchoredPosition = CalcLocation(ApUsed, attack.getApCost());
+            attackBarRT.anchoredPosition = CalcLocation(attack.APCost);
             AttackBars.Add(attackBarUI);
-            attackBarUI.GetComponent<Text>().text = attack.getName();
-            attackBarRT.sizeDelta = new Vector2(attackBarRT.rect.width * attack.getApCost(), attackBarRT.rect.height);
+            attackBarUI.GetComponent<Text>().text = attack.AttackName;
+            attackBarRT.sizeDelta = new Vector2(attackBarRT.rect.width * attack.APCost, attackBarRT.rect.height);
             attacks.Add(attack);
-            ApUsed += attack.getApCost();
+            ApUsed += attack.APCost;
 
         }
     }
 
-    public void RemoveLastAttack()
-    {
-        removeAttack(attacks.Count - 1);
-    }
-
-    public void RemoveFirstAttack()
-    {
-        removeAttack(0);
-        int x = 0;
-        int apUsed = 0;
-        foreach (GameObject attackBarUI in AttackBars)
-        {
-            UIChoosable attack = attacks[x];
-            RectTransform attackBarRT = attackBarUI.GetComponent<RectTransform>();
-            attackBarRT.anchoredPosition = CalcLocation(apUsed, attack.getApCost());
-            apUsed += attack.getApCost();
-            x++;
-        }
-    }
-
-    private void removeAttack(int location)
+    public void RemoveAttack()
     {
         if (attacks.Count > 0)
         {
-            UIChoosable toBeRemovedAttack = attacks[location];
-            ApUsed -= toBeRemovedAttack.getApCost();
+            int location = attacks.Count - 1;
+            Attack toBeRemovedAttack = attacks[location];
+            ApUsed -= toBeRemovedAttack.APCost;
             attacks.RemoveAt(location);
             GameObject attackBarUI = AttackBars[location];
             AttackBars.RemoveAt(location);
             Destroy(attackBarUI);
+
+            //working on
         }
     }
 
-    private Vector3 CalcLocation(int apUsed, int ApCost)
+    private Vector3 CalcLocation(int ApCost)
     {
-        float x = -160 + (46 * apUsed) + 22.8f * (ApCost-1);
+        float x = -160 + (46 * ApUsed) + 22.8f * (ApCost-1);
+        
         return new Vector3(x, 0, 0);
     }
 }

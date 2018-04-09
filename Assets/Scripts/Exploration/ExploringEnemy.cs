@@ -8,8 +8,6 @@ public class ExploringEnemy : MonoBehaviour {
     public Tile myTile;
     public List<Character> characters;
 
-    private bool canMove = true;
-
 	// Use this for initialization
 	void Start () {
         this.transform.position += new Vector3(0, 1, 0);
@@ -18,7 +16,6 @@ public class ExploringEnemy : MonoBehaviour {
     private void OnEnable()
     {
         ExploringParty.positionChanged += Move;
-        Tile.CombatTriggered += MayNotMove;
     }
 
     // Update is called once per frame
@@ -26,38 +23,29 @@ public class ExploringEnemy : MonoBehaviour {
 		
 	}
 
-    private void MayNotMove(ExploringEnemy enemy) {
-        canMove = false;
-    }
-
     private void Move()
     {
-        if (canMove)
-        {
-            int moveLocation = Random.Range(0, 5);
-            Vector3 movement = new Vector3(0, 0, 0);
-            switch (moveLocation)
-            {
-                case 1:
-                    movement = new Vector3(1, 0, 0);
-                    break;
-                case 2:
-                    movement = new Vector3(-1, 0, 0);
-                    break;
-                case 3:
-                    movement = new Vector3(0, 0, 1);
-                    break;
-                case 4:
-                    movement = new Vector3(0, 0, -1);
-                    break;
-            }
-
-            if (moveLocation != 0)
-            {
-                StartCoroutine(DelayedMove(movement));
-            }
+        int moveLocation = Random.Range(0, 5);
+        Vector3 movement = new Vector3(0,0,0);
+        switch (moveLocation){
+            case 1:
+                movement = new Vector3(1, 0, 0);
+                break;
+            case 2:
+                movement = new Vector3(-1, 0, 0);
+                break;
+            case 3:
+                movement = new Vector3(0, 0, 1);
+                break;
+            case 4:
+                movement = new Vector3(0, 0, -1);
+                break;
         }
-        canMove = true;
+
+        if (moveLocation != 0)
+        {
+            StartCoroutine(DelayedMove(movement));
+        }
 
     }
 
@@ -79,7 +67,7 @@ public class ExploringEnemy : MonoBehaviour {
                 if (hit.collider.transform.parent.gameObject.tag == "Tile")
             {
                 Tile tile = hit.collider.transform.parent.gameObject.GetComponent<Tile>();
-                if (tile.CanWalkHereEnemy(this))
+                if (tile.CanWalkHereEnemy())
                 {
                     myTile.enemy = null;
                     myTile = tile;
