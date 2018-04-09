@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour {
 
-    public bool hasPlayer;
     public ExploringEnemy enemy;
     public bool NotWalkable;
     public bool PlayerSpawnTile;
@@ -57,7 +56,7 @@ public class Tile : MonoBehaviour {
         return true;
     }
 
-    public bool CanWalkHereEnemy(ExploringEnemy requestingEnemy)
+    public bool CanWalkHereEnemy()
     {
         if (NotWalkable)
         {
@@ -66,10 +65,6 @@ public class Tile : MonoBehaviour {
         if (enemy != null)
         {
             return false;
-        }
-        if (hasPlayer)
-        {
-            CombatTriggered(requestingEnemy);
         }
         return true;
     }

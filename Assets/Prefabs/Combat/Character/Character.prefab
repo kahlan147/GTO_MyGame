@@ -64,8 +64,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Steven
-  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
-  attack2: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
-  attack3: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
-  attack4: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
