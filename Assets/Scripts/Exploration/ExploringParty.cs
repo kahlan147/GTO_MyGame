@@ -58,23 +58,29 @@ public class ExploringParty : MonoBehaviour {
         }
     }
 
+    //Attempt to move to a new tile.
     private void MoveToTile(Vector3 direction)
     {
-        Vector3 potentialNewPosition = this.transform.position + direction;
+        Vector3 potentialNewPosition = this.transform.position + direction; //Calculate the potential new position to move to.
 
         RaycastHit hit;
-        Physics.Raycast(potentialNewPosition, Vector3.down * 3, out hit);
+        Physics.Raycast(potentialNewPosition, Vector3.down * 3, out hit); //Draw a raycast downwards from the potential new position.
 
         if (hit.collider != null)
         {
-            if (hit.collider.transform.parent.gameObject.tag == "Tile")
+            if (hit.collider.transform.parent.gameObject.tag == "Tile") //check if the hit object is a tile.
             {
                 Tile tile = hit.collider.transform.parent.gameObject.GetComponent<Tile>();
-                if (tile.CanWalkHerePlayer())
+                if (tile.CanWalkHerePlayer()) //Check wether the player is allowed to move here.
                 {
+                    if (myTile != null)
+                    {
+                        myTile.hasPlayer = false;
+                    }
                     myTile = tile;
-                    this.transform.position = potentialNewPosition;
-                    positionChanged();
+                    myTile.hasPlayer = true;
+                    this.transform.position = potentialNewPosition; //Move to the new position.
+                    positionChanged(); //Call an event to let other objects know the player has moved.
                 }
             }
         }

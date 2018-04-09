@@ -9,6 +9,8 @@ public class GameplaySwitcher : MonoBehaviour {
     public delegate void TriggerCombat(bool triggered);
     public static event TriggerCombat CombatTriggered;
 
+    private bool combatOngoing = false;
+
     // Use this for initialization
     void Start () {
 		
@@ -16,7 +18,7 @@ public class GameplaySwitcher : MonoBehaviour {
 
     private void OnEnable()
     {
-        //Tile.CombatTriggered += combatTriggered;
+        Tile.CombatTriggered += combatTriggered;
     }
 
     // Update is called once per frame
@@ -24,10 +26,17 @@ public class GameplaySwitcher : MonoBehaviour {
 		
 	}
 
-    public void combatTriggered() {
+    public void combatTriggered(ExploringEnemy enemy) {
         cameraController.SwitchCamera();
-        //Destroy(enemy.gameObject);
+        Destroy(enemy.gameObject);
         CombatTriggered(true);
         //TO BE WORKED ON.
+    }
+
+    public void combatTriggeredDebug() //REMOVE LATER
+    {
+        cameraController.SwitchCamera();
+        combatOngoing = !combatOngoing;
+        CombatTriggered(combatOngoing);
     }
 }
